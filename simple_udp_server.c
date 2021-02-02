@@ -5,13 +5,13 @@
 #include <string.h>
 #include <unistd.h>
 
-#define BUFF_SIZE 1024
+#define BUFFER_SIZE 1024
 #define PORT 7890
 
 int main(void)
 {
     int fd;
-    unsigned char buff[BUFF_SIZE];
+    unsigned char buff[BUFFER_SIZE];
     struct sockaddr_in client_addr, server_addr;
     socklen_t slen = sizeof(client_addr);
 
@@ -31,7 +31,7 @@ int main(void)
 
     printf("Server was started on port %d...\n", PORT);
 
-    recvfrom(fd, buff, BUFF_SIZE, 0, (struct sockaddr *)&client_addr, &slen);
+    recvfrom(fd, buff, BUFFER_SIZE, 0, (struct sockaddr *)&client_addr, &slen);
 
     while (1) {
         if (!strncmp("/quit", buff, 5)) {
@@ -39,7 +39,7 @@ int main(void)
             exit(1);
         }
         printf(" > %s", buff);
-        recvfrom(fd, buff, BUFF_SIZE, 0, (struct sockaddr *)&client_addr, &slen);
+        recvfrom(fd, buff, BUFFER_SIZE, 0, (struct sockaddr *)&client_addr, &slen);
     }
     
     return 0;
