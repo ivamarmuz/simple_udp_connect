@@ -10,7 +10,8 @@
 #define SERVER_ADDR "192.168.1.2"
 #define PORT 7890
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int fd;
     char addr[16] = SERVER_ADDR;
     struct sockaddr_in server_addr;
